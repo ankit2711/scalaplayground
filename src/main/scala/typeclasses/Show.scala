@@ -8,6 +8,8 @@ trait Show[A] {
 //Companion Object
 object Show {
 
+  def apply[A](implicit sh: Show[A]) = sh
+
   //With implicit argument (Option 1)
   def show[A](a: A)(implicit sh: Show[A]) = sh.show(a)
 
@@ -15,8 +17,6 @@ object Show {
   //def show[A: Show](a: A) = implicitly[Show[A]].show(a)
 
   //Apply method with implicit argument (Option 3)
-  def apply[A](implicit sh: Show[A]) = sh
-
   //def show[A: Show](a: A) = Show.apply[A].show(a)
 
   //Implicit implementation
